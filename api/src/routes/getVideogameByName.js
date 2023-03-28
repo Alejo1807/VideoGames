@@ -1,4 +1,6 @@
 const axios = require('axios');
+const { Videogames, Genres } = require('../db.js');
+const { Op } = require('sequelize');
 
 getVideogameByName = async (req,res) => {
 
@@ -8,27 +10,45 @@ getVideogameByName = async (req,res) => {
     let info;
     let allVideogames = [];
     let videogamesfiltered = [];
-    let videogame = {};
     
     try{
 
-        for(let i = 1; i<=3;i++){
-            info = await axios.get(`https://api.rawg.io/api/games/${i}?key=df304259d23f4b7e86a2dab81bae3262`);
-            videogame = info.data;
-            allVideogames.push(videogame);
-        }
+        info = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=df304259d23f4b7e86a2dab81bae3262`);
+        allVideogames = info.data.results;
 
         for(let i=0;i<allVideogames.length;i++){
 
             if( allVideogames[i].name.toUpperCase().includes(name)){
 
                 videogamesfiltered.push(allVideogames[i])
-
                 if(videogamesfiltered.length===15) break;
             }
         }
 
-        videogamesfiltered.length>0?res.status(200).json(videogamesfiltered):res.status(200).json({error:"no search results were found"})
+        if(videogamesfiltered.length<15){
+            
+            const games = await Videogames.findAll({
+                where: {
+                    name:{
+                        [Op.iLike]: `%${name}%`
+                    } 
+                }
+              },
+              { include: [{
+                model:Genres,
+                through: {
+                  attributes: []
+                }
+            }] })
+                
+                for(let i=0;i<games.length;i++){
+                    videogamesfiltered.push(games[i])
+
+                    if(videogamesfiltered.length===15) break;
+                }  
+        }
+
+        videogamesfiltered.length>0?res.status(200).json(videogamesfiltered):res.status(200).json({error:"no videogames were found"})
 
     } catch (error){
         return res.status(400).json({error:error.message})
