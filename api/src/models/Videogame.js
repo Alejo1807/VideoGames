@@ -10,9 +10,8 @@ module.exports = (sequelize) => {
     },
 
     id: {
-      //type: DataTypes.INTEGER,
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      defaultValue: DataTypes.UUIDV4, //crea clave de 36 caracteres de manera automática para que sean distintos a los de la API
       primaryKey: true
     },
 

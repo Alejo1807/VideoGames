@@ -6,9 +6,10 @@ getVideogameById = async (req,res) => {
     const { idVideogame } = req.params;
 
     const id = parseInt(idVideogame);
-    
-if(!isNaN(id) && idVideogame.length <36){
-        try{
+//Condicional que define si se busca en API o postgreSQL:   
+if(!isNaN(id) && idVideogame.length <36){ //verifica que sea número y en caso de tener 36 dígitos pasa a ser buscado en postgreSQL (así se definió clave)
+    //Busca en API
+    try{
         const info = await axios.get(`https://api.rawg.io/api/games/${id}?key=df304259d23f4b7e86a2dab81bae3262`)
         const videogame = info.data
         return res.status(200).json(videogame)
@@ -16,7 +17,7 @@ if(!isNaN(id) && idVideogame.length <36){
         return res.status(400).json({error:error.message})
     }
 } else {
-
+    //Busca en postgreSQL 
     try{
         const game = await Videogames.findByPk(idVideogame,{ include: [{
             model:Genres,

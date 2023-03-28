@@ -15,6 +15,6 @@ module.exports = (sequelize) => {
     }
 
   }, {
-    timestamps: false
+    timestamps: false //Retiro los timestamps por default
   });
 };
