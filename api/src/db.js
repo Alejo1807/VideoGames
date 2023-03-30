@@ -34,7 +34,7 @@ const { Videogames,Genres } = sequelize.models;
 
 // Relaciones de tablas:
 
-Videogames.belongsToMany(Genres, { through: "VideogameGenres" });
+Videogames.belongsToMany(Genres, { through: "VideogameGenres",as:'genres' });
 Genres.belongsToMany(Videogames, { through: "VideogameGenres" });
 
 module.exports = {

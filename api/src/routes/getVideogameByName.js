@@ -6,7 +6,8 @@ getVideogameByName = async (req,res) => {
 
     let name = req._parsedUrl.query;
     name = name.slice(1).toUpperCase() //Convierte en mayúscula (igulamente se hace los filtros para garantizar no case sensitive)
-
+    let name2 = name.replace(/%20/g," ") //Para solventar el problema de espacion en la URL definidos ocmo %20
+    console.log(name2)
     let info;
     let allVideogames = [];
     let videogamesfiltered = [];
@@ -18,7 +19,7 @@ getVideogameByName = async (req,res) => {
 
         for(let i=0;i<allVideogames.length;i++){
 
-            if( allVideogames[i].name.toUpperCase().includes(name)){ //Verifica que contenga la palabra (no aproximaciones como lo hace la API perse)
+            if( allVideogames[i].name.toUpperCase().includes(name2)){ //Verifica que contenga la palabra (no aproximaciones como lo hace la API perse)
 
                 videogamesfiltered.push(allVideogames[i])
                 if(videogamesfiltered.length===15) break; //Verifica que no pase de 15 resultados
@@ -30,16 +31,18 @@ getVideogameByName = async (req,res) => {
             const games = await Videogames.findAll({
                 where: {
                     name:{
-                        [Op.iLike]: `%${name}%` //iLike es no case-sensitive y % busca el substring 
+                        [Op.iLike]: `%${name2}%` //iLike es no case-sensitive y % busca el substring 
                     } 
-                }
-              },
-              { include: [{
+                },
+                include: {
                 model:Genres,
+                as:"genres",
                 through: {
                   attributes: []
                 }
-            }] })
+            } 
+              },
+               )
                 
                 for(let i=0;i<games.length;i++){
                     videogamesfiltered.push(games[i])

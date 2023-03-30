@@ -2,10 +2,10 @@ const { Videogames,VideogameGenres } = require('../db.js')
 
 postVideogame = async (req,res) => {
 
-const { name,description,platforms,image,released,rating,genres } = req.body
+const { name,description,platforms,background_image,released,rating,genres } = req.body
 
 //Condicional que verifica que todos los parámetros para el videogame vengan por body:
-if(!name || !description || !platforms || !image || !released || !rating || !genres){
+if(!name || !description || !platforms || !background_image || !released || !rating || !genres){
     res.status(400).json({error:'no parameters complete'});
 } else{
     try{ //crea registro en "Videogames"
@@ -13,7 +13,7 @@ if(!name || !description || !platforms || !image || !released || !rating || !gen
             name,
             description,
             platforms,
-            image,
+            background_image,
             released,
             rating
         }); 

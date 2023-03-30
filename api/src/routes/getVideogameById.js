@@ -21,6 +21,7 @@ if(!isNaN(id) && idVideogame.length <36){ //verifica que sea número y en caso d
     try{
         const game = await Videogames.findByPk(idVideogame,{ include: [{
             model:Genres,
+            as:"genres",
             through: {
               attributes: []
             }
