@@ -25,6 +25,38 @@ const getGame = (name)=>{
     }
 }
 
-const actions = {getGame};
+const orderGameByName = (e)=>{
+    return {
+        type: "ORDER_NAME",
+        payload:e.target.value
+    }
+}
+
+const orderGameByRating = (e)=>{
+    return {
+        type: "ORDER_RATING",
+        payload:e.target.value
+    }
+}
+
+const filterGameByGenre = (e)=>{
+    return {
+        type: "FILTER_GENRE",
+        payload:e.target.value
+    }
+}
+
+const filterGameByOrigin = (e)=>{
+    return {
+        type: "FILTER_ORIGIN",
+        payload:e.target.value
+    }
+}
+
+const resetVideogames = ()=>{
+    return {type:"RESET_VIDEOGAMES"}
+}
+
+const actions = {getGame,orderGameByName,orderGameByRating,filterGameByGenre,filterGameByOrigin,resetVideogames};
 
 export default actions;

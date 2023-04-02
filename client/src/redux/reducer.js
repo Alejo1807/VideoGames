@@ -10,24 +10,24 @@ const reducer = (state=initialState,action) =>{
                 videogames:action.payload,
                 videogamesFiltered:action.payload
             }
-        case "FILTER_GENDER":
+        case "FILTER_GENRE":
             return {
                 ...state,
                 videogamesFiltered:state.videogames.filter(game =>
-                    game.genres.some(genre => genre.name === action.payload)
+                        game.genres.some(genre => genre.name === action.payload)
                 )
             };
         case "FILTER_ORIGIN":
             return {
                 ...state,
                 videogamesFiltered:state.videogames.filter(game =>
-                    action.payload?game.id.length<36:game.id.length===36    
+                        action.payload==='API'?game.id.length===undefined:game.id.length===36
                 )
             };
         case "ORDER_NAME":
             return {
                 ...state,
-                videogamesFiltered:[...state.videogames].sort((a,b)=>{
+                videogamesFiltered:[...state.videogamesFiltered].sort((a,b)=>{
                     if(action.payload==="Ascendente")
                     {   
                         if (a.name > b.name) {return 1;}
@@ -40,14 +40,19 @@ const reducer = (state=initialState,action) =>{
                     }
                 })
             };
-        case "ORDER_RATINGS":
+        case "ORDER_RATING":
                 return {
                     ...state,
-                    videogamesFiltered:[...state.videogames].sort((a,b)=>{
-                        if(action.payload==="Ascendente") return a.ratings - b.ratings;
-                        return b.ratings - a.ratings;
+                    videogamesFiltered:[...state.videogamesFiltered].sort((a,b)=>{
+                        if(action.payload==="Ascendente") return a.rating - b.rating;
+                        return b.rating - a.rating;
                     })    
                 };
+        case "RESET_VIDEOGAMES":
+            return {
+                ...state,
+                videogamesFiltered:[...state.videogames]
+            }
         default:
             return initialState;
     };
