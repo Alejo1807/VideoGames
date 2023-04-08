@@ -1,0 +1,63 @@
+@font-face {
+    font-family: '8bitOperatorPlus8';
+    src: url(../../utils/fonts/8bitOperatorPlus8-Bold.ttf);
+}
+
+.main{
+    margin-top: 10%;
+    height: 100%;
+}
+
+.div{
+    margin-top: 30%;
+    display: flex;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+.div span{
+    display:block;
+    font-size:xx-large;
+    font-family: '8bitOperatorPlus8';
+    white-space: nowrap;
+    border-right: 4px solid;
+    width: 38ch;
+
+    animation: typing 1s steps(38), blink .5s infinite step-end alternate;
+    overflow: hidden;
+}
+
+.sub_btm{
+    margin-top: 5%;
+}
+
+.btm{
+    padding: 1%;
+    font-size: large;
+    
+}
+
+@media (max-width: 600px){
+    .div span{
+        font-size:large;
+    }
+
+    .div{
+        margin-top: 25%;
+    }
+
+    .sub_btm{
+        margin-top: 80%;
+    }
+}
+
+@keyframes typing {
+    from { width: 0 }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}

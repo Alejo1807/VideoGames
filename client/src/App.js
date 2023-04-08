@@ -33,7 +33,6 @@ function goToHome () {
 
   return (
     <div className="App">
-      <h1>Henry Videogames</h1>
 
       {location.pathname!=="/"&&location.pathname!=="/error"?<Nav/>:""}
 

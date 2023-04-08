@@ -4,6 +4,7 @@ import axios from "axios";
 import actions from "../../redux/actions";
 import Card from "../Card/Card";
 import Searchbar from "../Searchbar/Searchbar";
+import style from './Home.module.css'
 
 
 export default function Home(props){
@@ -53,28 +54,49 @@ export default function Home(props){
     },[setGenres])
 
     return(
-        <div>
-            <div>
-                <select name="OrderByName" onChange={orderGameByName}>
-                    <option value="Ascendente">Ascendente</option>
-                    <option value="Descendente">Descendente</option>
-                </select>
-                <select name="OrderByRatings" onChange={orderGameByRating}>
-                    <option value="Ascendente">Ascendente</option>
-                    <option value="Descendente">Descendente</option>
-                </select>
-                <select name="FilterByGenres" onChange={filterGameByGenre}>
-                    {genres.map(genre=><option key={genres.indexOf(genre)}>{genre.name}</option>)}
-                </select>
-                <select name="FilterByOrigin" onChange={filterGameByOrigin}>
-                    <option value="API">API</option>
-                    <option value="PostgreSQL">PostgreSQL</option>
-                </select>
-                <button onClick={resetVideogames}>Reset</button>
-            </div>
-            <br/>
-            <div>
+        <div className={style.home}>  
+            <aside className={style.aside}>
                 <Searchbar/>
+
+                <fieldset>
+                    <legend>Ordenar por Nombre:</legend>
+                    <label>
+                        <input type="radio" name="OrderByName" value="Ascendente" onChange={orderGameByName}/> Ascendente
+                    </label>
+                    <label>
+                        <input type="radio" name="OrderByName" value="Descendente" onChange={orderGameByName}/> Descendente
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Ordenar por Rating:</legend>
+                    <label>
+                        <input type="radio" name="OrderByRating" value="Ascendente" onChange={orderGameByRating}/> Ascendente
+                    </label>
+                    <label>
+                        <input type="radio" name="OrderByRating" value="Descendente" onChange={orderGameByRating}/> Descendente
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Filtrar por:</legend>
+
+                    <h2>Género:</h2>
+                    <select name="FilterByGenres" onChange={filterGameByGenre}>
+                        {genres.map(genre=><option key={genres.indexOf(genre)}>{genre.name}</option>)}
+                    </select>
+
+                    <h2>Origen:</h2>
+                    <select name="FilterByOrigin" onChange={filterGameByOrigin}>
+                        <option value="API">API</option>
+                        <option value="PostgreSQL">PostgreSQL</option>
+                    </select>
+                </fieldset>
+
+                <button onClick={resetVideogames}>Reset</button>
+            </aside>
+
+            <div className={style.cards}>
                 {videogames.map((videogame)=>
                     {  
                         return <Card

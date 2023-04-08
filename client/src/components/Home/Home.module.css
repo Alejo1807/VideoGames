@@ -1,0 +1,25 @@
+.home{
+    display: block;
+    background-image: url('../../utils/img/fondoabstracto.jpg');
+    background-size: cover ;
+    height: 100%;
+}
+
+.aside{
+    display:grid;
+    width: 10%;
+    height: 500px;
+    float: left;
+}
+
+.aside fieldset{
+    display:grid;
+}
+
+.cards{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+
