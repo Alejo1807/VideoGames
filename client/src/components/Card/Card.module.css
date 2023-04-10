@@ -32,28 +32,6 @@
   animation: spin 2.5s linear infinite;
 }
 
-.card::after{
-    content: "";
-    position: absolute;
-    width: 10px;
-    top: calc(var(--card-height) / 6);
-    left: 0;
-    right: 0;
-    z-index: -1;
-    height: 10%;
-    width: 10%;
-    margin: 0 auto;
-    transform: scale(1.2);
-    filter: blur(calc(var(--card-height) / 6));
-    background-image: linear-gradient(
-      var(--rotate)
-      , #5ddcff, #aee33c 43%, #4e00c2);
-      opacity: 1;
-    transition: opacity .5s;
-    animation: spin 2.5s linear infinite;
-
-  }
-
 .inside{
     background-color: rgba(24, 24, 24, 0.851);
     border-radius: 3%;

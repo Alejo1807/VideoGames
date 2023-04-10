@@ -6,13 +6,20 @@ getVideogames = async (req,res) => {
     let info
     let allVideogames = [];
     let videogame = {};
+    let ruta = `https://api.rawg.io/api/games?key=df304259d23f4b7e86a2dab81bae3262`
     
     try{
         //Busca en API:
         for(let i = 1; i<=1;i++){
-            info = await axios.get(`https://api.rawg.io/api/games/${i}?key=df304259d23f4b7e86a2dab81bae3262`).then(info => info.data).catch((error)=>{{error:error}});
-            videogame = {id:info.id,name:info.name,description:info.description,platforms:info.platforms,background_image:info.background_image,released:info.released,rating:info.rating,genres:info.genres};
-            allVideogames.push(videogame);
+            info = await axios.get(ruta);
+            ruta = info.data.next;
+            info = info.data.results;
+            console.log(ruta)
+
+            info.forEach(element => {
+                videogame = {id:element.id,name:element.name,description:element.description,platforms:element.platforms,background_image:element.background_image,released:element.released,rating:element.rating,genres:element.genres};
+                allVideogames.push(videogame);                
+            });
         }
         //Busca en postgreSQL:
         const games = await Videogames.findAll({ include: [{

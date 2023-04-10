@@ -1,0 +1,102 @@
+@font-face {
+    font-family: '8bitOperatorPlus8';
+    src: url(../../utils/fonts/8bitOperatorPlus8-Bold.ttf);
+}
+
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+
+:root {
+    --card-height: 65vh;
+    --card-width: calc(var(--card-height) / 1.5);
+  }
+
+.nav{
+    display: flex;
+    background-image: url('../../utils/img/NAVBAR.jpg');
+}
+
+.navs{
+    display: flex;
+    width: max-content;
+    justify-content: center;
+    align-content: center;
+    width: 70%;
+}
+
+.navlink{
+    background-color: rgba(38, 38, 38, 0.4);
+    color: white;
+    font-size: larger;
+    border-radius: 10%;
+    text-decoration: none;
+    width: 25%;
+    margin: 1% 2% 1% 2%;
+}
+
+.active{
+    background-color: rgba(38, 38, 38, 0.4);
+    color: white;
+    font-size: larger;
+    border-radius: 5%;
+    box-shadow: 0px 0px 3px 2px rgb(255, 255, 255), 0px 0px 10px 10px rgb(64, 70, 255);
+    text-decoration: none;
+    width: 25%;
+    margin: 1% 2% 1% 2%;
+    text-decoration: underline rgb(64, 70, 255);
+}
+
+.navlink:hover{
+    color: white;
+    font-size: larger;
+    background-image: linear-gradient(
+        var(--rotate)
+        , #51bbd9, #3c67e3 43%, #4e00c2);
+    box-shadow: 0px 0px 3px 2px rgb(255, 255, 255), 0px 0px 10px 10px rgb(115, 64, 255);
+    text-decoration: none;
+    width: 25%;
+    transition: opacity .5s;
+    animation: spin 2.5s linear infinite;
+}
+
+.div{
+    width: 30%;
+    margin-top: 1%;
+}
+
+.div span{
+    display:block;
+    font-size:x-large;
+    font-family: '8bitOperatorPlus8';
+    white-space: nowrap;
+    border-right: 4px solid;
+    width: 23ch;
+    animation: typing 1s steps(17), blink .5s infinite step-end alternate;
+    overflow: hidden;
+}
+
+@media (max-width: 600px){
+    .div span{
+        font-size:large;
+    }
+}
+
+@keyframes typing {
+    from { width: 0 }
+}
+
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+@keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }
