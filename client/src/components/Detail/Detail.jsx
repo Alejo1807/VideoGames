@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import style from './Detail.module.css'
 
 export default function Detail(){
 
@@ -69,15 +70,21 @@ export default function Detail(){
     
 //se define la descripcion a través de 'dangerouslySetInnerHTML' ya que viene como un string con HTML internamente
     return(
-        <div>
-            <div>{game.id}</div>
-            <div>{game.name}</div>
-            <figure><img src={game.background_image} alt={game.name} /></figure>
-            <div dangerouslySetInnerHTML={{__html:descripcion}}/>
-            <div>Año de Lanzamiento: {game.released}</div>
-            <div>Plataformas: {platformsArray.map(p=><div key={platformsArray.indexOf(p)}>- {p}</div>)}</div>
-            <div>Géneros: {genres.map(p=><div key={genres.indexOf(p)}>- {p}</div>)}</div>
-            <button onClick={backToHome}>Volver</button>
+        <div className={style.division}>
+            <div>
+                <div>{game.name}</div>
+                <div>ID: {game.id}</div>
+                <div>Año de Lanzamiento: {game.released}</div>
+                <div>Descripción:</div>
+                <div dangerouslySetInnerHTML={{__html:descripcion}}/>  
+            </div>
+              
+            <div>
+                <figure><img src={game.background_image} alt={game.name} /></figure>
+                <div>Plataformas: {platformsArray.map(p=><div key={platformsArray.indexOf(p)}>// {p} //</div>)}</div>
+                <div>Géneros: {genres.map(p=><div key={genres.indexOf(p)}>// {p} //</div>)}</div>
+                <button onClick={backToHome}>Volver</button>
+            </div>
         </div>
     )
 }

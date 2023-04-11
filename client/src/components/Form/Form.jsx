@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import validation from "./validation.js";
 import myPlatforms from "./platforms.js";
+import style from './Form.module.css'
 
 export default function Form(){
 
@@ -103,59 +104,75 @@ export default function Form(){
     },[platformsAdded,setNewGame])
 
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className={style.outside}>
+            <form onSubmit={handleSubmit} className={style.form}>
                 <h1>Añade tu videojuego!</h1>
 
                 <p>Ingresa la siguiente información y haz clic en el botón "añadir":</p>
-                <label>Nombre:</label>
-                <input type="text" name="name" onBlur={handleInputBlur}/>
-                {error.name?<p>{error.name}</p>:<div>------------------------------</div> }
-
-                <label>Descripción:</label>
-                <input type="text" name="description" onBlur={handleInputBlur}/>
-                {error.description?<p>{error.description}</p>:<div>------------------------------</div> }
-
-                <label>Plataformas disponibles:</label>
-                <select name="platforms" onChange={addPlatform}>
-                    {myPlatforms.map(myPlatform=><option key={myPlatforms.indexOf(myPlatform)}>{myPlatform}</option>)}
-                </select>
-                <div>
-                    <h2>Plataformas Seleccionadas:</h2>
-                    <div>
-                        {platformsAdded.map(platformAdded=>
-                        <div key={platformsAdded.indexOf(platformAdded)}>
-                            <div>{platformAdded}<button onClick={()=>onClose2(platformAdded)}>X</button></div>
-                        </div>)}
+            <div className={style.separador}>
+                <div className={style.columan1}>
+                    <div className={style.campo}>
+                        <label>Nombre videojuego </label>
+                        <input type="text" name="name" placeholder="Ingrese nombre (max. 40 caracteres)" onBlur={handleInputBlur}/>
                     </div>
+                    {error.name?<p>{error.name}</p>:<br/> }
+
+                    <div className={style.campo}>
+                        <label>URL imagen videojuego</label>
+                        <input type="url" name="background_image" placeholder="Ej. https://www.miimagen.com/img.jpg" onBlur={handleInputBlur}/>               
+                    </div>
+                        {error.background_image?<p>{error.background_image}</p>:<br/> } 
+
+                    <div className={style.campo2}>
+                        <label>Fecha de lanzamiento</label>
+                        <input type="date" name="released"  onBlur={handleInputBlur}/>                   
+                    </div>
+                        {error.released?<p>{error.released}</p>:<br/> }                 
+
+                    <div className={style.campo2}>
+                        <label>Rating</label>
+                        <input type="number" name="rating" step='any' onBlur={handleInputBlur}/>                                        
+                    </div>
+                        {error.rating?<p>{error.rating}</p>:<br/> }
                 </div>
-                <div>------------------------------</div>
 
-                <label>URL de imagen videojuego</label>
-                <input type="url" name="background_image"  onBlur={handleInputBlur}/>
-                {error.background_image?<p>{error.background_image}</p>:<div>------------------------------</div> }
+                <div className={style.columan1}>
+                    <div className={style.campo}>
+                        <label>Descripción:</label>
+                        <textarea name="description" rows={4} placeholder="Ingrese una descripción (max. 240 caracteres)" onBlur={handleInputBlur}/>
+                    </div>
+                        {error.description?<p>{error.description}</p>:<br/> }                
 
-                <label>Fecha de lanzamiento</label>
-                <input type="date" name="released"  onBlur={handleInputBlur}/>
-                {error.released?<p>{error.released}</p>:<div>------------------------------</div> }
+                    <div className={style.campo2}>
+                        <label>Añadir platafomas</label>
+                        <select name="platforms" onChange={addPlatform}>
+                            {myPlatforms.map(myPlatform=><option key={myPlatforms.indexOf(myPlatform)}>{myPlatform}</option>)}
+                        </select>
+                    </div>
+                    <div className={style.campo3}>
+                            {platformsAdded.map(platformAdded=>
+                            <div key={platformsAdded.indexOf(platformAdded)}>
+                                <div>{platformAdded}<button onClick={()=>onClose2(platformAdded)}>X</button></div>
+                            </div>)}
+                        </div>
+                    <br/>
+                    <div className={style.campo2}>
+                        <label>Añadir Géneros</label>
+                        <select name="genres" onChange={addGenre}>
+                            {genres.map(genre=><option key={genres.indexOf(genre)}>{genre.name}</option>)}
+                        </select>              
+                    </div>
 
-                <label>Rating</label>
-                <input type="number" name="rating"  onBlur={handleInputBlur}/>
-                {error.rating?<p>{error.rating}</p>:<div>------------------------------</div> }
-
-                <label>Añadir Géneros:</label>
-                <select name="genres" onChange={addGenre}>
-                    {genres.map(genre=><option key={genres.indexOf(genre)}>{genre.name}</option>)}
-                </select>
-                <div>
-                    <h2>Géneros Seleccionados:</h2>
-                    <div>
+                    <div className={style.campo3}>
                         {genresAdded.map(genreAdded=>
                         <div key={genresAdded.indexOf(genreAdded)}>
                             <div>{genreAdded.name}<button onClick={()=>onClose(genreAdded.name)}>X</button></div>
                         </div>)}
-                    </div>
+                    </div>   
+
                 </div>
+            </div>
+
                 <button type="submit">Añadir Videogame</button>
             </form>
         </div>

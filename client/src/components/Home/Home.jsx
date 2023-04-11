@@ -14,7 +14,7 @@ export default function Home(props){
     const dispatch = useDispatch();
 
     //Paginacion
-    const limit = 8; //Indica el máximo de cards en la paginación
+    const limit = 15; //Indica el máximo de cards en la paginación
     const paginas = Math.ceil(videogames.length/limit);
     const [posicioni,setPosicioni] = useState(0);
     const [posicionf,Setposicionf] = useState(limit);
@@ -22,15 +22,15 @@ export default function Home(props){
     const [videogamesp, setVideogamesp] = useState([]);
 
     useEffect(()=>{
-        console.log("inicio: " + posicioni,"fin: " + posicionf);
+        console.log("inicio: " + posicioni,"fin: " + posicionf,videogames.length);
         setPagina(Math.ceil(posicionf/limit));
         setVideogamesp(videogames.slice(posicioni,posicionf));
     },[videogames,posicioni,posicionf])
 
     function next(){
-        if(posicionf<videogames.length-1){
+        if(posicionf<=videogames.length-1){
             setPosicioni(posicioni+limit);
-            Setposicionf(Math.min(posicionf+limit,videogames.length-1));  
+            Setposicionf(Math.min(posicionf+limit,videogames.length));  
         }
     }
 
@@ -66,6 +66,7 @@ export default function Home(props){
         dispatch(actions.resetVideogames())
     }
 
+    // useEffect para actualizar los géneros en el filtro
     useEffect(()=>{
 
         async function axiosGenres(){
