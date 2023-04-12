@@ -9,6 +9,7 @@ export default function Detail(){
     const [platformsArray,setPlatformsArray] = useState([]);
     const [genres,setGenres] = useState([]);
     const [descripcion,setDescripcion] = useState("No return")
+    const [fecha,setFecha] =useState()
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -43,7 +44,9 @@ export default function Detail(){
         //Verificamos que ya se haya seteado un 'game'
         if(Object.values(game).length>0){  //En caso afirmativo
 
-        setDescripcion(game.description); //Genermos la descripción
+        setDescripcion(game.description); //Generamos la descripción
+        let fechaGame = new Date(game.released)
+        setFecha(fechaGame.toLocaleDateString());
 
         let plataforma;
         let generos;
@@ -71,20 +74,31 @@ export default function Detail(){
 //se define la descripcion a través de 'dangerouslySetInnerHTML' ya que viene como un string con HTML internamente
     return(
         <div className={style.division}>
-            <div>
-                <div>{game.name}</div>
-                <div>ID: {game.id}</div>
-                <div>Año de Lanzamiento: {game.released}</div>
-                <div>Descripción:</div>
-                <div dangerouslySetInnerHTML={{__html:descripcion}}/>  
+            <div className={style.columna1}>
+
+                <h1>{game.name}</h1>
+
+                <div className={style.contenedor}>
+                    <div> <div> ID </div>  {game.id}</div>
+                    <div><div> Lanzamiento </div> {fecha}</div>
+                    <div><div> Rating    </div> {game.rating} </div>
+                </div>
+                <br />
+                <h2>Descripción:</h2>
+                <div className={style.descripcion} dangerouslySetInnerHTML={{__html:descripcion}}/> 
+
             </div>
               
-            <div>
+            <div className={style.columna2}>
                 <figure><img src={game.background_image} alt={game.name} /></figure>
-                <div>Plataformas: {platformsArray.map(p=><div key={platformsArray.indexOf(p)}>// {p} //</div>)}</div>
-                <div>Géneros: {genres.map(p=><div key={genres.indexOf(p)}>// {p} //</div>)}</div>
-                <button onClick={backToHome}>Volver</button>
+                <div className={style.contenedor2}>Plataformas: {platformsArray.map(p=><div key={platformsArray.indexOf(p)}>{p}</div>)}</div>
+                <div className={style.contenedor2}>Géneros: {genres.map(p=><div key={genres.indexOf(p)}>{p}</div>)}</div>
             </div>
+            <br />
+            <div className={style.btm}>
+             <button onClick={backToHome}>Volver</button>                
+            </div>
+
         </div>
     )
 }

@@ -1,10 +1,12 @@
 .App {
   text-align: center;
+  background-image: url('./utils/img/controlimage.jpg');
   background-repeat: no-repeat;
-  background-size:contain;
+  background-size:cover;
   background-position:center;
   height: 100%;
   color: white;
+  margin: 0%;
 }
 
 .App-logo {

@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import image from '../../utils/img/mariosad.png'
+import style from './Error.module.css'
 
 export default function Error(){
 
@@ -10,9 +12,17 @@ export default function Error(){
     },[navigate])
 
     return(
-        <div>
-            <div>404</div>
-            <div>Opps! Page no found</div>
+        <div className={style.error}>
+
+            <img src={image} alt="error.png" />
+            <br />
+            <div>
+                <div>
+                    <h1>404</h1>
+                    <h2>Opps! Page no found</h2>                     
+                </div>
+            </div>
+
         </div>
     )
 }

@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'birdyGame';
+    src: url(../../utils/fonts/Birdy\ Game.ttf);
+}
+
+@font-face {
+    font-family: 'Gamelan';
+    src: url(../../utils/fonts/Gamelan.ttf);
+}
+
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+
+.searchbar{
+    display: flex;
+    margin-top: 5%;
+    margin-bottom: 0%;
+    height: 34px;
+}
+
+.searchbar button img{
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+}
+
+.searchbar input{
+    width: 80%;
+    font-family: 'Gamelan';
+    font-size: smaller;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin: 0%;
+    padding-left: 3%;
+}
+
+.searchbar button{
+    width: 20%;
+    background-color: rgba(32, 32, 32, 0.5);
+    border: white solid 1px;
+    padding: 0%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.searchbar button:hover{
+    background-image: linear-gradient(
+        var(--rotate)
+        , #51bbd9, #3c67e3 43%, #4e00c2);
+    box-shadow: 0px 0px 2px 1px rgb(255, 255, 255), 0px 0px 5px 5px rgb(115, 64, 255);
+    transition: opacity .5s;
+    animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }

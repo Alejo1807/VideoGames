@@ -3,13 +3,20 @@
     src: url(../../utils/fonts/8bitOperatorPlus8-Bold.ttf);
 }
 
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+
+
 .main{
-    margin-top: 10%;
     height: 100%;
 }
 
 .div{
-    margin-top: 30%;
+    margin-top: 0%;
+    padding-top: 7%;
     display: flex;
     width: 100%;
     align-content: center;
@@ -31,16 +38,35 @@
 }
 
 .sub_btm{
-    margin-top: 5%;
+    margin-top: 30%;
 }
 
 .btm{
-    padding: 1%;
-    font-size: large;
-    
+    background-image: linear-gradient(
+        var(--rotate)
+        , #51bbd9, #3c67e3 43%, #4e00c2);
+    font-family:'Gamelan';
+    color: white;
+    font-size: larger;
+    padding: 0.5% 2% 0.5% 2%;
+    border-radius: 10px;
+    border: white solid 2px;
+    transition: opacity .5s;
+    animation: spin 2.5s linear infinite;
 }
 
-@media (max-width: 600px){
+.btm:hover{
+    background-image: linear-gradient(
+        var(--rotate)
+        , #51bbd9, #3c67e3 43%, #4e00c2);
+    box-shadow: 0px 0px 3px 2px rgb(255, 255, 255), 0px 0px 10px 10px rgb(115, 64, 255);
+    transition: opacity .5s;
+    animation: spin 2.5s linear infinite;
+}
+
+
+
+@media (max-width: 700px){
     .div span{
         font-size:large;
     }
@@ -50,9 +76,10 @@
     }
 
     .sub_btm{
-        margin-top: 80%;
+        margin-top: 20%;
     }
 }
+
 
 @keyframes typing {
     from { width: 0 }
@@ -61,3 +88,12 @@
 @keyframes blink {
     50% { border-color: transparent; }
 }
+
+@keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }

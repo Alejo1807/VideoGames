@@ -21,6 +21,7 @@
 
 .outside{
     margin-top: 2%;
+    margin-bottom: 5%;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -144,6 +145,29 @@
 .campo3 div div{
 padding: 0%;
 margin: 0%;
+}
+
+
+.btm{
+    background-image: linear-gradient(
+        var(--rotate)
+        , #51bbd9, #3c67e3 43%, #4e00c2);
+    font-family:'Gamelan';
+    color: white;
+    font-size: larger;
+    padding: 0.5% 2% 0.5% 2%;
+    border-radius: 10px;
+    border: white solid 2px;
+    margin: 2%;
+}
+
+.btm:hover{
+    background-image: linear-gradient(
+        var(--rotate)
+        , #51bbd9, #3c67e3 43%, #4e00c2);
+    box-shadow: 0px 0px 3px 2px rgb(255, 255, 255), 0px 0px 10px 10px rgb(115, 64, 255);
+    transition: opacity .5s;
+    animation: spin 2.5s linear infinite;
 }
 
 @media (max-width: 700px){

@@ -10,7 +10,6 @@ import Detail from './components/Detail/Detail';
 import Nav from './components/Nav/Nav';
 import Error from './components/Error/Error';
 import Form from './components/Form/Form';
-import About from './components/About/About';
 
 
 function App() {
@@ -38,10 +37,9 @@ function goToHome () {
 
       <Routes>
         <Route path='/' element={<Landing goToHome={goToHome}/>}/>
-        {!videogames.hasOwnProperty('error')?<Route path='/home' element={<Home videogames={videogames}/>}/>:<Route path='/home' element={<Nogames/>}/>}
+        <Route path='/home' element={<Home videogames={videogames}/>}/>
         <Route path='/detail/:id' element={<Detail/>}/>
         <Route path='/form'element={<Form/>}/>
-        <Route path='/about'element={<About/>}/>
         <Route path='*' element={<Error/>}/>
       </Routes>
 

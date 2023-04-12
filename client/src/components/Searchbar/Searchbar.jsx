@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import actions from '../../redux/actions.js'
+import style from './Searchbar.module.css'
+import lupa from '../../utils/img/lupablanca-removebg-preview.png'
 
 export default function Searchbar(){
 
@@ -20,9 +22,9 @@ export default function Searchbar(){
     };
 
     return(
-        <div>
-            <input type="search" placeholder="Ingrese nombre" onChange={handleChange}/>
-            <button onClick={()=>onSearch(nameGame)}>Buscar por nombre</button>
+        <div className={style.searchbar}>
+            <input type="search" placeholder="Buscar por nombre..." onChange={handleChange}/>
+            <button onClick={()=>onSearch(nameGame)}> <img src={lupa} alt="🔍︎" /> </button>
         </div>
     );
 }

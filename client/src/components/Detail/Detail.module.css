@@ -1,3 +1,200 @@
+@font-face {
+    font-family: 'birdyGame';
+    src: url(../../utils/fonts/Birdy\ Game.ttf);
+}
+
+@font-face {
+    font-family: 'Gamelan';
+    src: url(../../utils/fonts/Gamelan.ttf);
+}
+
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+
+
 .division{
     display: flex;
+    flex-wrap: wrap;
+    background-image: url('../../utils/img/circlesimage.jpg');
+    background-size:cover;
+    height: 100%;
+    width: 99%;
+    margin: 0%;
+    border: 5px solid transparent;
+    border-image: linear-gradient(
+        var(--rotate)
+        , #5ddcff, #3ce33c 43%, #4e00c2) 1;
+    animation: spin 2.5s linear infinite;
 }
+
+.columna1, .columna2{
+    width: 50%;
+}
+
+.columna2{
+    display: grid;
+    align-items: center;
+}
+
+.columna1 h1{
+    padding-left: 5%;
+    font-family: 'birdyGame';
+    -webkit-text-stroke: 0.5px black;
+    font-size: 4em;
+    margin-bottom: 0%;
+}
+
+.columna1 h2{
+    font-family: 'birdyGame';
+    -webkit-text-stroke: 0.5px black;
+    font-size: 2em;
+    margin: 0%;
+}
+
+.columna1 div{
+    font-family:'Gamelan';
+}
+
+.columna2 figure{
+    background-image: linear-gradient(
+        var(--rotate)
+        , #5ddcff, #3c67e3 43%, #4e00c2);
+    animation: spin 2.5s linear infinite;
+    border-radius: 15px;
+    margin: 0%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding: 7px;
+    max-width: 80%;
+    justify-self: center;
+    display: flex;
+}
+
+.columna2 figure img{
+    height:10%;
+    width: 100%;
+    border-radius: 15px;
+    object-fit: scale-down;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.contenedor div{
+    display: grid;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin: 1%;
+    padding: 0%;
+    color: black;
+}
+
+.contenedor div div{
+    display: block;
+    background-color: rgb(44, 44, 44);
+    color: white;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 0%;
+    padding-right: 10%;
+    margin: 0%;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.descripcion{
+    background-color: rgba(45,45,45,0.5);
+    display: grid;
+    text-align: justify;
+    border: white solid 2px;
+    margin: 2%;
+    padding:2%;
+    border-radius: 15px;
+}
+
+.contenedor2{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    background-color: rgba(45,45,45,0.5);
+    border-radius: 15px;
+    margin: 1%;
+}
+
+.contenedor2 div{
+    display: grid;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin: 1%;
+    padding: 1%;
+    color: black;
+}
+
+.btm{
+    width: 100%;
+    margin: 1%;
+    padding: 0%;
+}
+
+.btm button{
+    background-image: linear-gradient(
+        var(--rotate)
+        , #51bbd9, #3c67e3 43%, #4e00c2);
+    font-family:'Gamelan';
+    color: white;
+    font-size: larger;
+    padding: 0.5% 2% 0.5% 2%;
+    border-radius: 10px;
+    border: white solid 2px;
+}
+
+.btm button:hover{
+    background-image: linear-gradient(
+        var(--rotate)
+        , #51bbd9, #3c67e3 43%, #4e00c2);
+    box-shadow: 0px 0px 3px 2px rgb(255, 255, 255), 0px 0px 10px 10px rgb(115, 64, 255);
+    transition: opacity .5s;
+    animation: spin 2.5s linear infinite;
+}
+
+@media (max-width: 1030px){
+    .division{
+        display: grid;
+    }
+
+    .columna1, .columna2{
+        width: 100%;
+    }
+
+    .contenedor2{
+        flex-wrap: wrap;
+    }
+
+    .columna1 h1{
+        font-size: 2em;
+    }
+
+    .columna1 h2{
+        font-size: 1.5em;
+    }
+
+}
+
+
+@keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }

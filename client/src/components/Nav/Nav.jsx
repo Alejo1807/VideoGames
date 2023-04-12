@@ -8,7 +8,6 @@ export default function Nav(){
             <div className={style.navs}>
                 <NavLink className={({isActive})=> isActive ? style.active : style.navlink} to="/home">Home</NavLink>
                 <NavLink className={({isActive})=> isActive ? style.active : style.navlink} to="/form" >Añadir Videogame</NavLink>
-                <NavLink className={({isActive})=> isActive ? style.active : style.navlink} to="/about">About</NavLink>
             </div>
         </div>
     )

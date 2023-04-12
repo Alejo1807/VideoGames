@@ -172,8 +172,7 @@ export default function Form(){
 
                 </div>
             </div>
-
-                <button type="submit">Añadir Videogame</button>
+                <button type="submit" className={style.btm}>Añadir Videogame</button>
             </form>
         </div>
     )

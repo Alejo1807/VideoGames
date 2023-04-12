@@ -28,7 +28,7 @@
 }
 
 .navlink{
-    background-color: rgba(38, 38, 38, 0.4);
+    background-color: rgba(38, 38, 38, 0.6);
     color: white;
     font-size: larger;
     border-radius: 10px;
@@ -38,15 +38,14 @@
 }
 
 .active{
-    background-color: rgba(38, 38, 38, 0.4);
+    background-color: rgba(38, 38, 38, 0.6);
     color: white;
     font-size: larger;
     border-radius: 10px;
-    box-shadow: 0px 0px 3px 2px rgb(255, 255, 255), 0px 0px 10px 10px rgb(64, 70, 255);
     text-decoration: none;
+    box-shadow: 0px 0px 3px 2px rgb(255, 255, 255), 0px 0px 10px 10px rgb(64, 70, 255);
     width: 25%;
     margin: 1% 2% 1% 2%;
-    text-decoration: underline rgb(64, 70, 255);
 }
 
 .navlink:hover{
@@ -78,9 +77,34 @@
     overflow: hidden;
 }
 
-@media (max-width: 600px){
+@media (max-width: 750px){
     .div span{
         font-size:large;
+    }
+
+    .nav{
+        display: grid;
+        justify-content: center;
+    }
+
+    .div{
+        width: 100%;
+        margin-top: 1%;
+        margin-bottom: 2%;
+    }
+
+    .navs{
+        width: 100%;
+    }
+
+    .navlink{
+        width: 70%;
+        font-size: medium;
+    }
+
+    .active{
+        width: 70%;
+        font-size: medium;
     }
 }
 

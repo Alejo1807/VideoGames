@@ -1,0 +1,68 @@
+@font-face {
+    font-family: 'birdyGame';
+    src: url(../../utils/fonts/Birdy\ Game.ttf);
+}
+
+@font-face {
+    font-family: 'Gamelan';
+    src: url(../../utils/fonts/Gamelan.ttf);
+}
+
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+
+
+.error{
+    height: 100%;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
+.error img{
+    margin-top: 4%;
+    height: 50%;
+    align-self: center;
+}
+
+.error div{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.error div div{
+    display: grid;
+    background-color: rgba(30, 30, 30, 0.5);
+    margin: 0%;
+    padding: 2%;
+    border: 5px solid transparent;
+    border-image: linear-gradient(
+        var(--rotate)
+        , #5ddcff, #e33f3c 43%, #4e00c2) 1;
+    animation: spin 2.5s linear infinite;
+}
+
+.error div div h1{
+    font-family: 'birdyGame';
+    -webkit-text-stroke: 0.5px black;
+    font-size: 4rem;
+    margin: 0%;
+}
+
+.error div div h2{
+    font-family: 'Gamelan';
+}
+
+@keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }
