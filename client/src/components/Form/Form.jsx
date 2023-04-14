@@ -68,7 +68,7 @@ export default function Form(){
             
         } else {
             evento.preventDefault();
-            alert("Debes diligenciar todos los campos con *");
+            alert("Debes diligenciar todos los campos con ✵");
         }
 
     }
@@ -112,25 +112,25 @@ export default function Form(){
             <div className={style.separador}>
                 <div className={style.columan1}>
                     <div className={style.campo}>
-                        <label>Nombre videojuego </label>
+                        <label>Nombre videojuego✵ </label>
                         <input type="text" name="name" placeholder="Ingrese nombre (max. 40 caracteres)" onBlur={handleInputBlur}/>
                     </div>
                     {error.name?<p>{error.name}</p>:<br/> }
 
                     <div className={style.campo}>
-                        <label>URL imagen videojuego</label>
+                        <label>URL imagen videojuego✵</label>
                         <input type="url" name="background_image" placeholder="Ej. https://www.miimagen.com/img.jpg" onBlur={handleInputBlur}/>               
                     </div>
                         {error.background_image?<p>{error.background_image}</p>:<br/> } 
 
                     <div className={style.campo2}>
-                        <label>Fecha de lanzamiento</label>
+                        <label>Fecha de lanzamiento✵</label>
                         <input type="date" name="released"  onBlur={handleInputBlur}/>                   
                     </div>
                         {error.released?<p>{error.released}</p>:<br/> }                 
 
                     <div className={style.campo2}>
-                        <label>Rating</label>
+                        <label>Rating✵</label>
                         <input type="number" name="rating" step='any' onBlur={handleInputBlur}/>                                        
                     </div>
                         {error.rating?<p>{error.rating}</p>:<br/> }
@@ -138,13 +138,13 @@ export default function Form(){
 
                 <div className={style.columan1}>
                     <div className={style.campo}>
-                        <label>Descripción:</label>
+                        <label>Descripción✵:</label>
                         <textarea name="description" rows={4} placeholder="Ingrese una descripción (max. 240 caracteres)" onBlur={handleInputBlur}/>
                     </div>
                         {error.description?<p>{error.description}</p>:<br/> }                
 
                     <div className={style.campo2}>
-                        <label>Añadir platafomas</label>
+                        <label>Añadir platafomas✵</label>
                         <select name="platforms" onChange={addPlatform}>
                             {myPlatforms.map(myPlatform=><option key={myPlatforms.indexOf(myPlatform)}>{myPlatform}</option>)}
                         </select>
@@ -157,7 +157,7 @@ export default function Form(){
                         </div>
                     <br/>
                     <div className={style.campo2}>
-                        <label>Añadir Géneros</label>
+                        <label>Añadir Géneros✵</label>
                         <select name="genres" onChange={addGenre}>
                             {genres.map(genre=><option key={genres.indexOf(genre)}>{genre.name}</option>)}
                         </select>              

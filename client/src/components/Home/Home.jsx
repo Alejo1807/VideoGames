@@ -13,7 +13,7 @@ export default function Home(props){
     const { videogames } = props;
     const [genres,setGenres] = useState([]);
     const dispatch = useDispatch();
-    const [aside,setAside] = useState(true);
+    const [aside,setAside] = useState(false);
 
     //Paginacion
     const limit = 15; //Indica el máximo de cards en la paginación
@@ -106,6 +106,11 @@ export default function Home(props){
         console.log(aside)
     }
 
+    function irPagina(e){
+        setPosicioni((e.target.value-1)*limit);
+        setPosicionf(parseInt((e.target.value-1)*limit)+limit);
+    }
+
     return(
         <div className={style.home}>
 
@@ -182,6 +187,8 @@ export default function Home(props){
                 <button onClick={previous}>{'<'}</button>
                 <button onClick={next}>{'>'}</button>
                 <div>Página {pagina} de {paginas}</div>
+                <label>- Ir a página:</label>
+                <input type="number" onBlur={irPagina}/>
             </div>: 
             <div></div> }
 

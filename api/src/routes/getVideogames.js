@@ -10,7 +10,7 @@ getVideogames = async (req,res) => {
     
     try{
         //Busca en API:
-        for(let i = 1; i<=3;i++){
+        for(let i = 1; i<=5;i++){
             info = await axios.get(ruta);
             ruta = info.data.next;
             info = info.data.results;
