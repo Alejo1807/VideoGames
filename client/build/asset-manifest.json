@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.be7973d1.chunk.css",
+    "main.js": "/static/js/main.fb4ebffd.chunk.js",
+    "main.js.map": "/static/js/main.fb4ebffd.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.3f79384d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.3f79384d.js.map",
+    "static/js/2.9ddbe182.chunk.js": "/static/js/2.9ddbe182.chunk.js",
+    "static/js/2.9ddbe182.chunk.js.map": "/static/js/2.9ddbe182.chunk.js.map",
+    "static/js/3.c8ef409b.chunk.js": "/static/js/3.c8ef409b.chunk.js",
+    "static/js/3.c8ef409b.chunk.js.map": "/static/js/3.c8ef409b.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.be7973d1.chunk.css.map": "/static/css/main.be7973d1.chunk.css.map",
+    "static/js/2.9ddbe182.chunk.js.LICENSE.txt": "/static/js/2.9ddbe182.chunk.js.LICENSE.txt",
+    "static/media/Landing.module.css": "/static/media/8bitOperatorPlus8-Bold.e59b6eb7.ttf",
+    "static/media/Error.module.css": "/static/media/Gamelan.899db9a9.ttf",
+    "static/media/Nav.module.css": "/static/media/NAVBAR.4ed7a17e.jpg",
+    "static/media/Detail.module.css": "/static/media/circlesimage.1aa0ee96.jpg",
+    "static/media/App.css": "/static/media/controlimage.43f70187.jpg",
+    "static/media/Home.module.css": "/static/media/fondoabstracto.f9266da8.jpg",
+    "static/media/mariosad.654ce5d6.png": "/static/media/mariosad.654ce5d6.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3f79384d.js",
+    "static/js/2.9ddbe182.chunk.js",
+    "static/css/main.be7973d1.chunk.css",
+    "static/js/main.fb4ebffd.chunk.js"
+  ]
+}
