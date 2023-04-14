@@ -22,7 +22,7 @@ export default function Detail(){
 
         async function axiosData(){
             try{
-                const info = await axios.get(`http://localhost:3001/videogames/${id}`);
+                const info = await axios.get(`/videogames/${id}`);
                 const data = info.data;
     
                 if(data.name){

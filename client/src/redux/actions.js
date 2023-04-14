@@ -7,10 +7,10 @@ const getGame = (name)=>{
             let info;
 
             if(name){
-                info = await axios.get(`http://localhost:3001/videogames/name?=${name}`);
+                info = await axios.get(`/videogames/name?=${name}`);
                 payload=info.data;
             } else {
-                info = await axios.get(`http://localhost:3001/videogames`);
+                info = await axios.get(`/videogames`);
                 payload=info.data;                
             }
 

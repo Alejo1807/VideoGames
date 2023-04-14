@@ -85,7 +85,7 @@ export default function Home(props){
 
         async function axiosGenres(){
             try{
-                const info= await axios.get('http://localhost:3001/genres');
+                const info= await axios.get('/genres');
                 const data = info.data;
 
                 if(data){
