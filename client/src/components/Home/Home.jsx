@@ -5,7 +5,8 @@ import actions from "../../redux/actions";
 import Card from "../Card/Card";
 import Searchbar from "../Searchbar/Searchbar";
 import Nogames from "../Nogames/Nogames";
-import style from './Home.module.css'
+import style from './Home.module.css';
+import Loading from "../Loading/Loading";
 
 
 export default function Home(props){
@@ -24,9 +25,7 @@ export default function Home(props){
     const [videogamesp, setVideogamesp] = useState([]);
 
     useEffect(()=>{
-
         if(videogames.length>0){
-        console.log("inicio: " + posicioni,"fin: " + posicionf,videogames.length);
         setPagina(Math.ceil(posicionf/limit));
         setVideogamesp(videogames.slice(posicioni,posicionf));}
     },[videogames,posicioni,posicionf])
@@ -47,37 +46,43 @@ export default function Home(props){
 
     //Ordenar por nombre
     function orderGameByName(e){
+        if(!videogames.hasOwnProperty('error')){
         dispatch(actions.orderGameByName(e));
         setPosicioni(0);
         setPosicionf(limit);
+        }
     }
 
     //Ordenar por Rating
     function orderGameByRating(e){
+        if(!videogames.hasOwnProperty('error')){
         dispatch(actions.orderGameByRating(e));
         setPosicioni(0);
-        setPosicionf(limit);
+        setPosicionf(limit);}
     }
 
     //Filtrar por Género
     function filterGameByGenre(e){
+        if(!videogames.hasOwnProperty('error')){
         dispatch(actions.filterGameByGenre(e));
         setPosicioni(0);
-        setPosicionf(limit);
+        setPosicionf(limit);}
     }
 
     //Filtrar por Origen
     function filterGameByOrigin(e){
+        if(!videogames.hasOwnProperty('error')){
         dispatch(actions.filterGameByOrigin(e));
         setPosicioni(0);
-        setPosicionf(limit);
+        setPosicionf(limit);}
     }
 
     //Mostrar todos
     function resetVideogames(){
+        if(!videogames.hasOwnProperty('error')){
         dispatch(actions.resetVideogames());
         setPosicioni(0);
-        setPosicionf(limit);
+        setPosicionf(limit);}
     }
 
     // useEffect para actualizar los géneros en el filtro
@@ -103,12 +108,14 @@ export default function Home(props){
 
     function showAside() {
         aside?setAside(false):setAside(true);
-        console.log(aside)
     }
 
     function irPagina(e){
-        setPosicioni((e.target.value-1)*limit);
-        setPosicionf(parseInt((e.target.value-1)*limit)+limit);
+        if(posicioni>limit-1 && posicionf<=videogames.length-1){
+            setPosicioni((e.target.value-1)*limit);
+            setPosicionf(parseInt((e.target.value-1)*limit)+limit);            
+        }
+
     }
 
     return(
@@ -151,12 +158,14 @@ export default function Home(props){
                         <div>Filtrar por:</div>
 
                         <h3>Género:</h3>
-                        <select name="FilterByGenres" onChange={filterGameByGenre}>
+                        <select name="FilterByGenres" defaultValue={'(seleccione género)'} onChange={filterGameByGenre}>
+                            <option disabled="disabled">(seleccione género)</option>
                             {genres.map(genre=><option key={genres.indexOf(genre)}>{genre.name}</option>)}
                         </select>
 
                         <h3>Origen:</h3>
-                        <select name="FilterByOrigin" onChange={filterGameByOrigin}>
+                        <select name="FilterByOrigin" defaultValue={'(seleccione origen)'} onChange={filterGameByOrigin}>
+                            <option disabled="disabled">(seleccione origen)</option>
                             <option value="API">API</option>
                             <option value="PostgreSQL">PostgreSQL</option>
                         </select>
@@ -167,7 +176,7 @@ export default function Home(props){
 
             </aside>
 
-            {!videogames.hasOwnProperty('error')&&videogames.length>0?
+            {videogames.hasOwnProperty('error')?<Nogames/>:videogames.length===0?<Loading/>:
             <div className={style.cards}>
                 {videogamesp.map((videogame)=>
                     {  
@@ -179,16 +188,15 @@ export default function Home(props){
                         id = {videogame.id}
                     />}
                     )}                
-            </div>:
-            <Nogames/>}
+            </div>}
 
             {!videogames.hasOwnProperty('error')&&videogames.length>0?
             <div>
-                <button onClick={previous}>{'<'}</button>
-                <button onClick={next}>{'>'}</button>
+                <button onClick={previous} className={style.btm}>{'⇦'}</button>
+                <button onClick={next} className={style.btm}>{' ⇨'}</button>
                 <div>Página {pagina} de {paginas}</div>
-                <label>- Ir a página:</label>
-                <input type="number" onBlur={irPagina}/>
+                <label>Ir a página:</label>
+                <input type="number" onChange={irPagina} className={style.input}/>
             </div>: 
             <div></div> }
 

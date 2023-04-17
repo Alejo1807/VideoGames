@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'birdyGame';
+    src: url(../../utils/fonts/Birdy\ Game.ttf);
+}
+
+@font-face {
+    font-family: 'Gamelan';
+    src: url(../../utils/fonts/Gamelan.ttf);
+}
+
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+}
+
+.caja{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30vh;
+    background-image: linear-gradient(
+        var(--rotate)
+        , #ff5d5d, #e33ccf 43%, #00afc2);
+    margin-top: 5%;
+    width: 30vh;
+    height:30vh;
+    padding: 2%;
+    padding: 0%;
+}
+
+.caja div{
+    display: flex;
+    background-color:rgba(31, 31, 31, 0.94);   
+    border-radius: 20vh; 
+    font-family: 'Gamelan';
+    font-size:medium;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+    height: 85%;
+}
+
+@keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }

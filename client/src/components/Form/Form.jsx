@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import validation from "./validation.js";
 import myPlatforms from "./platforms.js";
-import style from './Form.module.css'
+import style from './Form.module.css';
 
 export default function Form(){
 
@@ -95,12 +95,12 @@ export default function Form(){
 
     useEffect(()=>{
         const genres=genresAdded.map(genreAdded => genreAdded.id);
-        setNewGame({...newGame,genres});
+        setNewGame((c)=>({...c,genres}));
     },[genresAdded,setNewGame])
 
     useEffect(()=>{
         const platforms = platformsAdded.toString();
-        setNewGame({...newGame,platforms})
+        setNewGame(c=>({...c,platforms}))
     },[platformsAdded,setNewGame])
 
     return(
@@ -115,25 +115,25 @@ export default function Form(){
                         <label>Nombre videojuego✵ </label>
                         <input type="text" name="name" placeholder="Ingrese nombre (max. 40 caracteres)" onBlur={handleInputBlur}/>
                     </div>
-                    {error.name?<p>{error.name}</p>:<br/> }
+                    {error.name?<p className={style.error}>{error.name}</p>:<br/> }
 
                     <div className={style.campo}>
                         <label>URL imagen videojuego✵</label>
                         <input type="url" name="background_image" placeholder="Ej. https://www.miimagen.com/img.jpg" onBlur={handleInputBlur}/>               
                     </div>
-                        {error.background_image?<p>{error.background_image}</p>:<br/> } 
+                        {error.background_image?<p className={style.error}>{error.background_image}</p>:<br/> } 
 
                     <div className={style.campo2}>
                         <label>Fecha de lanzamiento✵</label>
                         <input type="date" name="released"  onBlur={handleInputBlur}/>                   
                     </div>
-                        {error.released?<p>{error.released}</p>:<br/> }                 
+                        {error.released?<p className={style.error}>{error.released}</p>:<br/> }                 
 
                     <div className={style.campo2}>
                         <label>Rating✵</label>
                         <input type="number" name="rating" step='any' onBlur={handleInputBlur}/>                                        
                     </div>
-                        {error.rating?<p>{error.rating}</p>:<br/> }
+                        {error.rating?<p className={style.error}>{error.rating}</p>:<br/> }
                 </div>
 
                 <div className={style.columan1}>
@@ -141,11 +141,12 @@ export default function Form(){
                         <label>Descripción✵:</label>
                         <textarea name="description" rows={4} placeholder="Ingrese una descripción (max. 240 caracteres)" onBlur={handleInputBlur}/>
                     </div>
-                        {error.description?<p>{error.description}</p>:<br/> }                
+                        {error.description?<p className={style.error}>{error.description}</p>:<br/> }                
 
                     <div className={style.campo2}>
                         <label>Añadir platafomas✵</label>
-                        <select name="platforms" onChange={addPlatform}>
+                        <select defaultValue={'(seleccione plataformas)'} name="platforms" onChange={addPlatform}>
+                            <option disabled="disabled">(seleccione plataformas)</option>
                             {myPlatforms.map(myPlatform=><option key={myPlatforms.indexOf(myPlatform)}>{myPlatform}</option>)}
                         </select>
                     </div>
@@ -158,7 +159,8 @@ export default function Form(){
                     <br/>
                     <div className={style.campo2}>
                         <label>Añadir Géneros✵</label>
-                        <select name="genres" onChange={addGenre}>
+                        <select  defaultValue={'(seleccione géneros)'} name="genres" onChange={addGenre}>
+                            <option disabled="disabled">(seleccione géneros)</option>
                             {genres.map(genre=><option key={genres.indexOf(genre)}>{genre.name}</option>)}
                         </select>              
                     </div>

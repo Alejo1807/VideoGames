@@ -5,7 +5,6 @@ import { useSelector,useDispatch } from 'react-redux';
 import Landing from './components/Landing/Landing';
 import Home from './components/Home/Home';
 import actions from './redux/actions';
-import Nogames from './components/Nogames/Nogames';
 import Detail from './components/Detail/Detail';
 import Nav from './components/Nav/Nav';
 import Error from './components/Error/Error';
@@ -23,8 +22,6 @@ function App() {
 
   const navigate=useNavigate();
   const videogames = useSelector(state => state.videogamesFiltered)
-  
-  console.log(videogames)
 
 function goToHome () {
   navigate('/home')
