@@ -1,6 +1,8 @@
 const axios = require('axios');
 const { Videogames, Genres } = require('../db.js');
 const { Op } = require('sequelize');
+require('dotenv').config();
+const { API_KEY } = process.env;
 
 getVideogameByName = async (req,res) => {
 
@@ -14,7 +16,7 @@ getVideogameByName = async (req,res) => {
     
     try{
         //Busca en API
-        info = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=df304259d23f4b7e86a2dab81bae3262`);
+        info = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`);
         allVideogames = info.data.results;
 
         for(let i=0;i<allVideogames.length;i++){

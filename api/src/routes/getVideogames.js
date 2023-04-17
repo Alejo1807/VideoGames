@@ -1,12 +1,14 @@
 const axios = require('axios')
 const { Videogames, Genres } = require('../db.js')
+require('dotenv').config();
+const { API_KEY } = process.env;
 
 getVideogames = async (req,res) => {
 
     let info
     let allVideogames = [];
     let videogame = {};
-    let ruta = `https://api.rawg.io/api/games?key=df304259d23f4b7e86a2dab81bae3262`
+    let ruta = `https://api.rawg.io/api/games?key=${API_KEY}`
     
     try{
         //Busca en API:

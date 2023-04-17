@@ -1,5 +1,8 @@
 const axios = require('axios');
 const { Videogames, Genres } = require('../db.js');
+require('dotenv').config();
+const { API_KEY } = process.env;
+
 
 getVideogameById = async (req,res) => {
 
@@ -10,7 +13,7 @@ getVideogameById = async (req,res) => {
 if(!isNaN(id) && idVideogame.length <36){ //verifica que sea número y en caso de tener 36 dígitos pasa a ser buscado en postgreSQL (así se definió clave)
     //Busca en API
     try{
-        const info = await axios.get(`https://api.rawg.io/api/games/${id}?key=df304259d23f4b7e86a2dab81bae3262`)
+        const info = await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
         const videogame = info.data
         return res.status(200).json(videogame)
     } catch (error){
