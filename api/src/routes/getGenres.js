@@ -1,7 +1,7 @@
 const { Genres } = require('../db.js');
 
-/* const saveApiData = require('./saveApiData'); //Guarda valores de la API en la DB de postgreSQL
-saveApiData(); */
+const saveApiData = require('./saveApiData'); //Guarda valores de la API en la DB de postgreSQL
+saveApiData();
 
 
 const getGenres = async (req,res) => {
