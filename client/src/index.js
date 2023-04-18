@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import axios from 'axios';
 
-axios.defaults.baseURL='videogames-production-2f57.up.railway.app'
+axios.defaults.baseURL='https://videogames-production-2f57.up.railway.app'
 
 ReactDOM.render(
 
