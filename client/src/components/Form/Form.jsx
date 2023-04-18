@@ -60,7 +60,7 @@ export default function Form(){
 
         if(errores.length===0 && !valNewGame){
             try{
-                await axios.post('http://localhost:3001/videogames',newGame);
+                await axios.post('/videogames',newGame);
                 window.alert('Videogame añadido con éxito');
             }catch(error){
                 console.log(error)
@@ -77,7 +77,7 @@ export default function Form(){
 
         async function axiosGenres(){
             try{
-                const info= await axios.get('http://localhost:3001/genres');
+                const info= await axios.get('/genres');
                 const data = info.data;
 
                 if(data){
